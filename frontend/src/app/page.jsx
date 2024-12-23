@@ -93,7 +93,10 @@ export default function Home() {
         <h2 className="text-lg font-bold mb-4 text-gray-700">Your Tasks</h2>
         <ul className="space-y-3">
           {todos.length > 0 ? (
-            todos.map((todo) => (
+            todos
+            .slice()
+            .sort((a, b) => b.completed - a.completed)
+            .map((todo) => (
               <li
                 key={todo._id}
                 className={`flex justify-between items-center p-3 rounded-md ${
